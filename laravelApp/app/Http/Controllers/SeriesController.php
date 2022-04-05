@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\View;
 class SeriesController
 {
-    public function index()
+    public function index(): string
     {
         $series = [
             'Sherlock',
@@ -13,6 +14,11 @@ class SeriesController
             'One Tree Hill',
         ];
 
-        dump($series);
+        return View::make('series.index', compact('series'));
+    }
+
+    public function create()
+    {
+        return View::make('series.create');
     }
 }

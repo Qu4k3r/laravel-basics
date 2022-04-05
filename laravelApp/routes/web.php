@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::resource('/series', SeriesController::class);
+Route::resource('/series/criar', SeriesController::class);
