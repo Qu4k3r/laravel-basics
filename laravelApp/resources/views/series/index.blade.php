@@ -9,6 +9,9 @@ Séries
 @endsection
 
 @section('content')
+
+    {{ $message }}
+
     <a href="/series/create">Adicionar</a>
 
     <ul class="list-group">
