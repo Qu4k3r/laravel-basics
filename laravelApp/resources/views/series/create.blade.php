@@ -6,7 +6,7 @@ Adicionar série
 @endsection
 
 @section('content')
-    <form method="POST" action="/series">
+    <form method="POST" action={{route('series.index')}}>
 {{--        quando o Laravel recebe uma requisição com dados de formulário por post,--}}
 {{--        ele verifica que estamos mandando para ele um token de verificação para assegurar--}}
 {{--        que essa requisição está chegando pelo próprio site.--}}

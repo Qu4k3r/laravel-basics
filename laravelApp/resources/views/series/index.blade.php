@@ -12,7 +12,7 @@ Séries
 
     {{ $message }}
 
-    <a href="/series/create">Adicionar</a>
+    <a href={{route('series.create')}}>Adicionar</a>
 
     <ul class="list-group">
         @foreach($series as $serie)
@@ -21,7 +21,7 @@ Séries
 
             <form
                 method="POST"
-                action="/series/{{$serie->id}}"
+                action={{route('series.destroy', ['series' => $serie->id])}}
                 onsubmit="return confirm('Tem certeza que deseja remover a serie {{addslashes($serie->name)}}?')"
             >
                 @csrf

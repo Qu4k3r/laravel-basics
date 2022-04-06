@@ -7,6 +7,7 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\View as ViewFacade;
 use Illuminate\Support\Str;
 use Illuminate\View\View;
@@ -44,7 +45,7 @@ class SeriesController
 //        $req->session()->put('message', "Serie {$serie->id} criada com sucesso: {$serie->name}");
         $req->session()->flash('message', "Serie {$serie->id} criada com sucesso: {$serie->name}");
 
-        return redirect('/series');
+        return Redirect::route('series.index');
     }
 
     public function destroy(Request $req, string $serieId)
@@ -53,6 +54,6 @@ class SeriesController
         Serie::destroy($serieId);
         $req->session()->flash('message', "Serie {$serie->name} removida com sucesso");
 
-        return redirect('/series');
+        return Redirect::route('series.index');
     }
 }
