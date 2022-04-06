@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SeriesFormRequest;
 use App\Models\Serie;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\RedirectResponse;
@@ -31,7 +32,7 @@ class SeriesController
         return ViewFacade::make('series.create');
     }
 
-    public function store(Request $req): Redirector|Application|RedirectResponse
+    public function store(SeriesFormRequest $req): Redirector|Application|RedirectResponse
     {
         $name = $req->name;
 
