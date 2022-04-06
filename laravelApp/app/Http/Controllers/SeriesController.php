@@ -46,4 +46,13 @@ class SeriesController
 
         return redirect('/series');
     }
+
+    public function destroy(Request $req, string $serieId)
+    {
+        $serie = Serie::find($serieId);
+        Serie::destroy($serieId);
+        $req->session()->flash('message', "Serie {$serie->name} removida com sucesso");
+
+        return redirect('/series');
+    }
 }

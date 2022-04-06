@@ -8,8 +8,9 @@ class Serie extends Model
 {
     use HasFactory;
 
-//    esse atributo sendo false, evita que as colunas created_at e updated_at existam em minha tabela
+    // esse atributo sendo false, evita que as colunas created_at e updated_at existam na tabela
     public $timestamps = false;
-
+    // evita que o uuid seja transformado em int (isso tava dando uma dor de cabeca, meu amigo ...)
+    public $incrementing = false;
     protected $fillable = ['id', 'name'];
 }

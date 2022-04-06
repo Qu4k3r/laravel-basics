@@ -16,7 +16,19 @@ Séries
 
     <ul class="list-group">
         @foreach($series as $serie)
-        <li class="list-group-item">{{$serie->name}}</li>
+        <li class="list-group-item">
+            {{$serie->name}}
+
+            <form
+                method="POST"
+                action="/series/{{$serie->id}}"
+                onsubmit="return confirm('Tem certeza que deseja remover a serie {{addslashes($serie->name)}}?')"
+            >
+                @csrf
+                @method('DELETE')
+                <button>Excluir</button>
+            </form>
+        </li>
         @endforeach
     </ul>
 @endsection
