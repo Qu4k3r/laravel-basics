@@ -6,10 +6,15 @@ Adicionar série
 @endsection
 
 @section('content')
-    <form method="POST">
+    <form method="POST" action="/series">
+{{--        quando o Laravel recebe uma requisição com dados de formulário por post,--}}
+{{--        ele verifica que estamos mandando para ele um token de verificação para assegurar--}}
+{{--        que essa requisição está chegando pelo próprio site.--}}
+{{--        Esse token pode ser enviado adicionando a linha @csrf ao nosso formulário.--}}
+        @csrf
         <div class="form-group">
-            <label for="nome">Nome</label>
-            <input type="text" class="form-control" name="nome" id="nome">
+            <label for="name">Nome</label>
+            <input type="text" class="form-control" name="name" id="name">
 
         </div>
         <button class="btn btn-primary">Adicionar</button>

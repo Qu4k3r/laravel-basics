@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('series', function (Blueprint $table) {
-            $table->uuid('id')->primary();
+            $table->uuid('id')->unique();
             $table->string('name');
         });
     }

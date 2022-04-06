@@ -2,23 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\View;
+use App\Models\Serie;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View as ViewFacade;
+use Illuminate\Support\Str;
+use Illuminate\View\View;
 class SeriesController
 {
-    public function index(): string
+    public function index(): View
     {
-        $series = [
-            'Sherlock',
-            'Friends',
-            'Forever',
-            'One Tree Hill',
-        ];
+        $series = Serie::all();
 
-        return View::make('series.index', compact('series'));
+        return ViewFacade::make('series.index', compact('series'));
     }
 
-    public function create()
+    public function create(): View
     {
-        return View::make('series.create');
+        return ViewFacade::make('series.create');
+    }
+
+    public function store(Request $req)
+    {
+        $name = $req->name;
+
+        $serie = Serie::create([
+            'id' => Str::uuid()->toString(),
+            'name' => $name,
+        ]);
+//        ou
+//        $serie = Serie::create($req->all());
+
+        echo "Serie {$serie->name} criada com sucesso. Retorne a pagina principal.";
     }
 }
