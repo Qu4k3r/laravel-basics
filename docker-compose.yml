@@ -2,37 +2,37 @@ version: '3.8'
 
 services:
   app:
-    container_name: 'web-scrapping'
+    container_name: 'app-php'
     restart: always
     working_dir: /var/www
     build:
       context: .
       dockerfile: Dockerfile
     networks:
-      - web-scrapping
+      - app-php
     volumes:
-      - ../laravelApp:/var/www
+      - .:/var/www
     depends_on:
       - pgsql
 
   nginx:
     image: nginx:1.21-alpine
-    container_name: 'nginx-web-scrapping'
+    container_name: 'nginx-app-php'
     volumes:
-      - ../laravelApp:/var/www
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      - .:/var/www
+      - .docker/nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
-      - 2000:80
+      - 2022:80
     networks:
-      - web-scrapping
+      - app-php
     depends_on:
       - app
 
   pgsql:
     image: postgres:14
-    container_name: 'db-web-scrapping'
+    container_name: 'db-app-php'
     ports:
-      - 2001:5432
+      - 2023:5432
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
@@ -41,13 +41,13 @@ services:
       - POSTGRES_DB=api_localhost
       - PGDATA=/var/lib/postgresql/data/db-files/
     networks:
-      - web-scrapping
+      - app-php
 
 volumes:
   postgres_data:
     driver: local
 
 networks:
-  web-scrapping:
-    name: web-scrapping
+  app-php:
+    name: app-php
     driver: bridge
