@@ -8,7 +8,9 @@ Caso queira utilizar esse ambiente pronto para desenvolvimento em PHP, sinta-se 
 >Obs.: Talvez algumas mudanças sejam necessárias no arquivo `Makefile`
 
 ## Configuração do autoload (PSR-4)
-Ao iniciar um novo projeto com `composer init`, ao final do processo, o autoload já estará configurado para você (confira seu `composer.json`).
+Ao iniciar um novo projeto com `composer init` (se tiver dúvida, cosulte esse [link](https://weaintplastic.github.io/web-development-field-guide/Development/Frontend_Development/Setting_up_your_project/Setup_Dependency_Managers/Composer/Initialize_Composer_on_a_new_Project.html)).
+
+No final do processo, o autoload já estará configurado para você (confira seu `composer.json`).
 
 Agora é só importar o autoload no arquivo raiz do seu projeto (geralmente `index.php`), com o devido nome da chave do objeto `psr-4` em seu `composer.json` e começar a codar!!
 
